@@ -1,8 +1,9 @@
 /*
 Implements EIP20 token standard: https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md
 .*/
-
-
+/*
+该合约主要是ETH官网提供的生成代币的demo，修改了其中的构造函数，改成可以通过外部传参数，生成不同的代币
+.*/
 pragma solidity ^0.4.21;
 
 import "./EIP20Interface.sol";

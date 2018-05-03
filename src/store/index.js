@@ -3,13 +3,13 @@ import Vuex from 'vuex'
 import state from './state'
 import getWeb3 from '../util/getWeb3'
 import pollWeb3 from '../util/pollWeb3'
-import getContract from '../util/getContract'
 
 Vue.use(Vuex)
 export const store = new Vuex.Store({
   strict: true,
   state,
   mutations: {
+    //注册web3实例相关信息
     registerWeb3Instance (state, payload) {
       console.log('registerWeb3instance Mutation being executed', payload)
       let result = payload
@@ -22,38 +22,41 @@ export const store = new Vuex.Store({
       state.web3 = web3Copy
       pollWeb3()
     },
+    //更新账户信息
     pollWeb3Instance (state, payload) {
       console.log('pollWeb3Instance mutation being executed', payload)
       state.web3.coinbase = payload.coinbase
       state.web3.balance = parseInt(payload.balance, 10)
+      if (state.web3.flag){
+          state.web3.payChange = !state.web3.payChange 
+          state.web3.flag = false
+      }
     },
+    //注册智能合约接口
     registerContractInstance (state, payload) {
       console.log('Casino contract instance: ', payload)
       state.contractInstance = () => payload
-      console.log("contractInstance"+state.contractInstance);
+    },
+    //触发代币发行状态
+    isReadyMakeCoin(state){
+       state.web3.flag = true 
     }
   },
+
   actions: {
+    //触发注册web3实例
     registerWeb3 ({commit}) {
-      console.log('registerWeb3 Action being executed')
+      console.log('注册web3实例')
       getWeb3.then(result => {
-        console.log('committing result to registerWeb3Instance mutation')
         commit('registerWeb3Instance', result)
-        console.log("result:")
-        console.log(result)
       }).catch(e => {
         console.log('error in action registerWeb3', e)
       })
     },
+    //触发查询账户信息
     pollWeb3 ({commit}, payload) {
       console.log('pollWeb3 action being executed')
       commit('pollWeb3Instance', payload)
     },
-    getContractInstance ({commit}) {
-      getContract.then(result => {
-        console.log("获取合约接口"+result)
-        commit('registerContractInstance', result)
-      }).catch(e => console.log(e))
-    }
   }
 })

@@ -5,7 +5,9 @@ let state = {
     networkId: null,
     coinbase: null,
     balance: null,
-    error: null
+    error: null,
+    flag:null,
+    payChange:false
   },
   contractInstance: null
 }

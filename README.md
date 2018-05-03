@@ -1,4 +1,4 @@
-# betting-dapp
+# token-dapp
 
 > A Vue.js project
 

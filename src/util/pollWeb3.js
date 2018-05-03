@@ -1,3 +1,4 @@
+//监测账号及账号余额是否发生改变，实时更新
 import Web3 from 'web3'
 import {store} from '../store/'
 
