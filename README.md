@@ -1,27 +1,18 @@
 # token-dapp
 
-> A Vue.js project
+> 一个基于`vue`、`element`可以自助发行以太坊数字货币的网站，需配合`metamask`插件使用。
 
-## Build Setup
+详细使用方法关注微信公众号`小回忆1991`
+
+> 注意：由于发行的是真实的以太坊代币，所以需要支付0.01ETh左右的费用。
+
+## 起步
 
 ``` bash
-# install dependencies
+# 安装
 npm install
 
-# serve with hot reload at localhost:8080
+# 启动
 npm run dev
 
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-
-# run unit tests
-npm run unit
-
-# run all tests
-npm test
 ```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
